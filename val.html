@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 For My Beautiful Sabby 💖</title>
+    <link rel="stylesheet" href="val.css">
+</head>
+<body>
+    <!-- Music Player -->
+    <audio id="loveSong" loop>
+        <source src="para_siempre.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <!-- Confetti Container -->
+    <div id="confetti"></div>
+
+    <div class="hearts-container">
+        <!-- Floating Hearts -->
+        <div class="heart">💜</div>
+        <div class="heart">💜</div>
+        <div class="heart">💜</div>
+        <div class="heart">💜</div>
+        <div class="heart">💜</div>
+        <div class="heart">💜</div>
+    
+        <!-- Floating S + V -->
+        <div class="initials">S + V</div>
+        <div class="initials">S + V</div>
+        <div class="initials">S + V</div>
+        <div class="initials">S + V</div>
+        <div class="initials">S + V</div>
+        <div class="initials">S + V</div>
+    </div>
+
+    <div class="container">
+        <!-- Message (Hidden Initially) -->
+        <div id="message" class="message"></div>
+
+        <!-- Bouquet Image (Hidden Initially) -->
+        <img id="bouquet" src="bouqet.jpg" alt="A Beautiful Bouquet for Sabby 💐">
+
+        <h1>Sabby, Will You Be My Valentine? 💖</h1>
+
+        <div class="buttons">
+            <button class="yes" onclick="playMusic()">Yes</button>
+            <button class="no" onmouseover="moveButton(this)">No</button>
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById("loveSong");
+
+        function playMusic() {
+            audio.volume = 0.3;
+            audio.play().catch(() => {
+                console.log("Autoplay blocked, user must click 'Yes'.");
+            });
+
+            // Show the message
+            const message = document.getElementById("message");
+            message.textContent = "Yay! I love you, my sweet strawberry princess, my dear Wife! ❤️";
+            message.style.display = "block"; // Show the message inside the container
+
+            // Show confetti
+            showConfetti();
+
+            // Show the confetti
+            document.getElementById("confetti").style.display = "block";
+        }
+
+        function showConfetti() {
+            const confettiContainer = document.getElementById("confetti");
+
+            // Generate random confetti pieces
+            for (let i = 0; i < 100; i++) {
+                const confettiPiece = document.createElement("div");
+                confettiPiece.classList.add("confetti-piece");
+                confettiPiece.style.left = `${Math.random() * 100}vw`;
+                confettiPiece.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                confettiContainer.appendChild(confettiPiece);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                document.getElementById("bouquet").classList.add("show");
+            }, 2000);
+        });
+
+        function moveButton(btn) {
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.position = "absolute";
+            btn.style.left = `${x}px`;
+            btn.style.top = `${y}px`;
+        }
+    </script>
+
+</body>
+</html>

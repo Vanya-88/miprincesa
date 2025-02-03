@@ -1,0 +1,179 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    text-align: center;
+    font-family: 'Poppins', Arial, sans-serif;
+    padding: 20px;
+}
+
+/* Main Container */
+.container {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: auto; /* Allow width to adjust to content */
+    max-width: 100%; /* Prevent overflow */
+    display: inline-block; /* Make the container's width match the image's width */
+    text-align: center; /* Center align the content inside the container */
+
+}
+
+#bouqet {
+    width: 100%;
+    max-width: 100%; /* Image stays within the container's width */
+    height: auto;
+    display: block;
+    margin: 0 auto 15px; /* Centers the image */
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+#bouqet.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Heading */
+h1 {
+    color: red;
+    font-size: 22px;
+}
+
+/* Buttons */
+.buttons {
+    margin-top: 15px;
+}
+
+button {
+    font-size: 16px;
+    padding: 12px 20px;
+    margin: 8px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+/* Yes Button */
+.yes {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.yes:hover {
+    background-color: darkred;
+}
+
+/* No Button (Moves) */
+.no {
+    background-color: gray;
+    color: white;
+    position: absolute;
+}
+
+.no:hover {
+    position: absolute;
+}
+
+/* 💜 Floating Purple Hearts & "S + V" */
+@keyframes floatHearts {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+}
+
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.heart, .initials {
+    position: absolute;
+    bottom: -10px;
+    opacity: 0.6;
+    animation: floatHearts 6s linear infinite;
+}
+
+/* Hearts */
+.heart {
+    color: #a855f7; /* Purple */
+    font-size: 20px;
+}
+
+/* Floating "S + V" */
+.initials {
+    color: #ff66b2; /* Romantic Pink */
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 1; /* Ensure the initials are on top of hearts */
+}
+
+/* Random Positions & Sizes */
+.heart:nth-child(1) { left: 10%; animation-duration: 4s; font-size: 24px; }
+.heart:nth-child(2) { left: 25%; animation-duration: 6s; font-size: 18px; }
+.heart:nth-child(3) { left: 40%; animation-duration: 5.5s; font-size: 22px; }
+.heart:nth-child(4) { left: 60%; animation-duration: 4.5s; font-size: 26px; }
+.heart:nth-child(5) { left: 75%; animation-duration: 5s; font-size: 20px; }
+.heart:nth-child(6) { left: 90%; animation-duration: 6s; font-size: 28px; }
+
+/* Adjusted positions for "S + V" to prevent overlap */
+.initials:nth-child(7) { left: 15%; animation-duration: 4s; font-size: 24px; }
+.initials:nth-child(8) { left: 30%; animation-duration: 6s; font-size: 18px; }
+.initials:nth-child(9) { left: 45%; animation-duration: 5.5s; font-size: 22px; }
+.initials:nth-child(10) { left: 55%; animation-duration: 4.5s; font-size: 26px; }
+.initials:nth-child(11) { left: 70%; animation-duration: 5s; font-size: 20px; }
+.initials:nth-child(12) { left: 85%; animation-duration: 6s; font-size: 28px; }
+
+
+#confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    display: none; /* Hidden initially */
+}
+
+/* Message Style */
+.message {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff66b2; /* Pinkish color for the message */
+    text-align: center;
+    margin-bottom: 20px;
+    display: none; /* Initially hidden */
+}
+
+/* Confetti Animation (Simple CSS) */
+@keyframes confetti-fall {
+    0% { transform: translateY(-100%); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.confetti-piece {
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #ff66b2;
+    opacity: 1;
+    animation: confetti-fall 2s linear infinite;
+}
+
+.confetti-piece:nth-child(odd) {
+    background-color: #a855f7;
+}
